@@ -2,6 +2,7 @@
   "name": "drewkimberly/php_dtos",
   "description": "A simple PHP Data Transfer Object (DTO) library.",
   "type": "library",
+  "license": "MIT",
   "require": {
     "php": ">=7.2",
     "ext-json": "*"
