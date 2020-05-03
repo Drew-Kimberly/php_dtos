@@ -27,6 +27,15 @@ class DtoCollectionTest extends UnitTestCase
         $this->collection = new DtoCollection(TestDtoForCollection::class);
     }
 
+    /**
+     * Tests that an exception is thrown when a missing class type is passed into __construct().
+     */
+    public function testConstructorMissingClassType()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        new DtoCollection('InvalidClass', []);
+    }
+
   /**
    * Tests getCollection().
    */
@@ -140,6 +149,15 @@ class DtoCollectionTest extends UnitTestCase
         $this->assertEquals($expected, DtoCollection::jsonDeserialize($json, $context));
     }
 
+    /**
+     * Tests deserialize().
+     */
+    public function testDeserialize()
+    {
+        $expected = new DtoCollection(TestDtoForCollection::class);
+        $this->assertEquals($expected, $this->collection->deserialize([]));
+    }
+
   /**
    * Tests getCollectionType().
    */
@@ -188,6 +206,26 @@ class DtoCollectionTest extends UnitTestCase
         $this->collection->offsetSet(5, $dto);
         $this->collection->offsetUnset(5);
         $this->assertNull($this->collection[5]);
+    }
+
+    /**
+     * Tests __toString() on an empty collection.
+     */
+    public function testToStringEmpty()
+    {
+        $expected = '[]';
+        $this->assertEquals($expected, (string) $this->collection);
+    }
+
+    /**
+     * Tests __toString() when the collection contains DTOs.
+     */
+    public function testToStringWithItems()
+    {
+        $expected = '[{"value":null},{"value":null}]';
+        $this->collection->append(new TestDtoForCollection());
+        $this->collection->append(new TestDtoForCollection());
+        $this->assertEquals($expected, (string) $this->collection);
     }
 }
 
