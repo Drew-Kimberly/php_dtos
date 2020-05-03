@@ -1,6 +1,7 @@
 # PHP Data Transfer Objects (DTOs)
 A simple PHP DTO library.
 
+[![PHP version](https://badge.fury.io/ph/drewkimberly%2Fphp_dtos.svg)](https://badge.fury.io/ph/drewkimberly%2Fphp_dtos)
 [![Build Status](https://travis-ci.org/Drew-Kimberly/php_dtos.svg?branch=master)](https://travis-ci.org/Drew-Kimberly/php_dtos)
 [![Coverage Status](https://coveralls.io/repos/github/Drew-Kimberly/php_dtos/badge.svg?branch=master)](https://coveralls.io/github/Drew-Kimberly/php_dtos?branch=master)
 
