@@ -2,6 +2,7 @@
 A simple PHP DTO library.
 
 [![Build Status](https://travis-ci.org/Drew-Kimberly/php_dtos.svg?branch=master)](https://travis-ci.org/Drew-Kimberly/php_dtos)
+[![Coverage Status](https://coveralls.io/repos/github/Drew-Kimberly/php_dtos/badge.svg?branch=master)](https://coveralls.io/github/Drew-Kimberly/php_dtos?branch=master)
 
 ### Installation:
 ```bash
