@@ -16,7 +16,7 @@ class UnitTestCase extends TestCase
      * @param array $actual
      * @param string $message
      */
-    protected function assertArrayEquals(array $expected, array $actual, $message = null)
+    protected function assertArrayEquals(array $expected, array $actual, $message = '')
     {
         ksort($expected);
         ksort($actual);

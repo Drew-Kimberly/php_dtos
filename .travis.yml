@@ -24,8 +24,12 @@ env:
 
 before_script:
   - travis_retry composer install
+  - mkdir -p build/logs
 
 script:
   - phplint
   - phpcs
-  - phpunit
+  - phpunit --coverage-clover build/logs/clover.xml
+
+after_success:
+  - test $TRAVIS_PHP_VERSION = "7.3" && php vendor/bin/php-coveralls
