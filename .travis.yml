@@ -1,0 +1,31 @@
+# @file
+# .travis.yml - Travis CI Integration
+#
+
+language: php
+php:
+  - '7.2'
+  - '7.3'
+  - '7.4'
+
+cache:
+  bundler: true
+  directories:
+    - $HOME/.composer/cache
+
+notifications:
+  email:
+    - drew.kimberly@west.com
+
+env:
+  global:
+    # Add Composer's global bin directory to the path.
+    - PATH="$TRAVIS_BUILD_DIR/vendor/bin:$PATH"
+
+before_script:
+  - travis_retry composer install
+
+script:
+  - phplint
+  - phpcs
+  - phpunit

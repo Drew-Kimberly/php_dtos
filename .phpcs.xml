@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<ruleset name="php_dtos">
+    <description>PHP Codesniffer configuration for the WDMS PHP DTOs library.</description>
+
+    <!-- Files to be sniffed.-->
+    <file>./</file>
+    <arg name="extensions" value="php,yml"/>
+
+    <!--Files/paths to be excluded.-->
+    <exclude-pattern>vendor/*</exclude-pattern>
+    <exclude-pattern>.travis.yml</exclude-pattern>
+    <exclude-pattern>*.css</exclude-pattern>
+    <exclude-pattern>*.js</exclude-pattern>
+    <exclude-pattern>*.md</exclude-pattern>
+
+    <!-- Configure the Sniffs to apply.-->
+    <rule ref="PSR2"/>
+
+    <rule ref="PSR1.Classes.ClassDeclaration">
+        <exclude-pattern>tests/src/*</exclude-pattern>
+    </rule>
+
+    <!-- Misc. appearance configuration.-->
+    <arg name="basepath" value="."/>
+    <arg name="colors"/>
+    <arg value="p"/>
+
+</ruleset>
