@@ -1,6 +1,8 @@
 # PHP Data Transfer Objects (DTOs)
 A simple PHP DTO library.
 
+[![Build Status](https://travis-ci.org/Drew-Kimberly/php_dtos.svg?branch=master)](https://travis-ci.org/Drew-Kimberly/php_dtos)
+
 ### Installation:
 ```bash
 composer require drewkimberly/php_dtos
