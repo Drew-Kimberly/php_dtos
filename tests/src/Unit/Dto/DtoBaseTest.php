@@ -58,6 +58,7 @@ class DtoBaseTest extends UnitTestCase
    */
     public function testJsonSerialize($in_collection, $expected)
     {
+        $this->dto->setInCollection($in_collection);
         $this->assertArrayEquals($expected, $this->dto->jsonSerialize());
     }
 
@@ -102,6 +103,35 @@ class DtoBaseTest extends UnitTestCase
 
         $this->assertEquals($expected, $this->dto->getPropertyValue($property));
     }
+
+    /**
+     * Tests that an exception is thrown when attempting a dynamic property set.
+     */
+    public function testDynamicPropertySetProtection()
+    {
+        $this->expectException(\LogicException::class);
+        $this->dto->dynamicParam = 'foo';
+    }
+
+    /**
+     * Tests __toString() with a simple DTO.
+     */
+    public function testToStringSimple()
+    {
+        $expected = '{"value":"hello world"}';
+        $this->dto->setValue('hello world');
+        $this->assertEquals($expected, (string) $this->dto);
+    }
+
+    /**
+     * Tests __toString() with a complex (nested) DTO.
+     */
+    public function testToStringComplex()
+    {
+        $expected = '{"value":{"value":"hello world"}}';
+        $this->dto->setValue(new TestDto('hello world'));
+        $this->assertEquals($expected, (string) $this->dto);
+    }
 }
 
 /**
@@ -111,6 +141,17 @@ class TestDto extends DtoBase
 {
 
     protected $value;
+
+    /**
+     * TestDto constructor.
+     *
+     * @param mixed $value
+     *   The value represented by the DTO. Defaults to NULL.
+     */
+    public function __construct($value = null)
+    {
+        $this->value = $value;
+    }
 
   /**
    * Gets the value.

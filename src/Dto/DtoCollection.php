@@ -191,18 +191,6 @@ class DtoCollection implements DtoCollectionInterface
    */
     public function __toString()
     {
-        if ($this->count() == 0) {
-            return "[] ";
-        }
-
-        $representation = "[  ";
-        foreach ($this->getCollection() as $item) {
-            $representation .= "  { ";
-            $representation .= (string) $item;
-            $representation .= "  }," . PHP_EOL;
-        }
-
-        $representation .= "  ]";
-        return $representation;
+        return json_encode($this);
     }
 }

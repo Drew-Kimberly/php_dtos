@@ -119,27 +119,6 @@ abstract class DtoBase implements DtoInterface
    */
     public function __toString()
     {
-        $representation = '';
-        $properties = get_object_vars($this);
-        $total = count($properties);
-        $count = 0;
-        foreach ($properties as $property => $value) {
-            $count++;
-            if ($property !== 'inCollection') {
-                if (!isset($value)) {
-                    $value = 'null';
-                }
-                if ($value instanceof DtoInterface) {
-                    $representation .= "{$property}: {$value}";
-                } else {
-                    $representation .= "{$property}: {$value}";
-                    if ($count < $total) {
-                        $representation .= "  ||  ";
-                    }
-                }
-            }
-        }
-
-        return $representation;
+        return json_encode($this);
     }
 }
